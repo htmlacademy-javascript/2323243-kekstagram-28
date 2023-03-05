@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { getRandomNumber } from './data.js';
 import { generateComment } from './data.js';
 import { generatePhoto } from './data.js';
