@@ -1,3 +1,6 @@
+import { getRandomDescription } from './arrays';
+import { getRandomName } from './arrays';
+
 // функция для генерации случайного числа в заданном диапазоне
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -41,4 +44,6 @@ function generatePhotosArray() {
 }
 
 export {getRandomNumber};
+export {generatePhoto};
+export {generateComment};
 export {generatePhotosArray};

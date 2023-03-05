@@ -1,4 +1,6 @@
 import { getRandomNumber } from './data.js';
+import { generateComment } from './data.js';
+import { generatePhoto } from './data.js';
 
 // функция для генерации случайной строки из заданных предложений
 function getRandomDescription() {
@@ -18,4 +20,7 @@ function getRandomName() {
   const names = ['Артём', 'Виктория', 'Глеб', 'Диана', 'Егор', 'Жанна'];
   return names[getRandomNumber(0, names.length - 1)];
 }
+
+export {getRandomDescription};
+export {getRandomName};
 

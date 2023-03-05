@@ -5,6 +5,8 @@
     ...
 */
 import './data.js';
-import './functions.js';
+import './utils.js';
+import './arrays.js';
+
 import {generatePhotosArray} from './data.js';
 
