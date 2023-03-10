@@ -8,7 +8,7 @@ function createPhotoElements() {
 
   const pictureTemplate = document.querySelector('#picture');
 
-  photos.forEach(photo => {
+  photos.forEach((photo) => {
     const pictureElement = pictureTemplate.content.cloneNode(true);
     const pictureImg = pictureElement.querySelector('.picture__img');
     const pictureLikes = pictureElement.querySelector('.picture__likes');
