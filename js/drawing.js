@@ -1,4 +1,5 @@
 import {generatePhotosArray} from './data.js';
+import {showBigPicture} from './bigPicture.js';
 
 function createPhotoElements() {
   const photos = generatePhotosArray();
@@ -22,6 +23,18 @@ function createPhotoElements() {
   });
 
   picturesContainer.appendChild(picturesFragment);
+
+  function onPictureClick(evt) {
+    const target = evt.target.closest('.picture');
+    if (target) {
+      const index = target.dataset.index;
+      const photo = photos[index];
+      showBigPicture(photo);
+    }
+  }
+
+  picturesContainer.addEventListener('click', onPictureClick);
 }
 
 export {createPhotoElements};
+
