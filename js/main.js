@@ -9,7 +9,8 @@ import './data.js';
 import './utils.js';
 import './arrays.js';
 import './drawing.js';
-import './bigPicture';
+import './bigPicture.js';
 
-import {generatePhotosArray} from './data.js';
+import {createPhotoElements} from './drawing.js';
+createPhotoElements();
 
