@@ -8,7 +8,6 @@
 import './data.js';
 import './utils.js';
 import './arrays.js';
-import './drawing.js';
 import './bigPicture.js';
 
 import {createPhotoElements} from './drawing.js';

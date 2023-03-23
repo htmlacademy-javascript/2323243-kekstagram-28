@@ -1,4 +1,7 @@
+import {createPhotoElements} from './drawing.js';
+
 function showBigPicture(photo) {
+
   const bigPicture = document.querySelector('.big-picture');
   bigPicture.classList.remove('hidden');
 
@@ -49,8 +52,8 @@ function showBigPicture(photo) {
     if (currentBatchSize >= photo.comments.length) {
       commentsLoader.classList.add('hidden');
     }
-  }
 
+  }
   renderComments();
 
   commentsLoader.addEventListener('click', () => {
@@ -62,6 +65,10 @@ function showBigPicture(photo) {
 
   document.addEventListener('keydown', onEscPress);
 
+const cancel = document.querySelector('.big-picture__cancel');
+ cancel.addEventListener('click', hideBigPicture);
+ console.log(cancel);
+
   function onEscPress(evt) {
     if (evt.key === 'Escape') {
       hideBigPicture();
@@ -69,15 +76,17 @@ function showBigPicture(photo) {
   }
 
   function hideBigPicture() {
+    console.log("f");
     bigPicture.classList.add('hidden');
     document.body.classList.remove('modal-open');
     document.removeEventListener('keydown', onEscPress);
   }
 }
 
+
 const commentCountElement = document.querySelector('.social__comment-count');
 const commentLoaderElement = document.querySelector('.social__comments-loader');
 commentCountElement.classList.remove('hidden');
 commentLoaderElement.classList.remove('hidden');
 
-export {showBigPicture};
+export {showBigPicture}
