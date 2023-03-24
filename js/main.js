@@ -9,6 +9,7 @@ import './data.js';
 import './utils.js';
 import './arrays.js';
 import './bigPicture.js';
+import './drawing.js';
 
 import {createPhotoElements} from './drawing.js';
 createPhotoElements();

@@ -9,10 +9,10 @@ function createPhotoElements() {
   const picturesContainer = document.querySelector('.pictures');
   // создаем фрагмент для вставки
   const picturesFragment = document.createDocumentFragment();
-  // находим шаблон
-  const pictureTemplate = document.querySelector('#picture');
 
-console.log(photos)
+   // находим шаблон
+   const pictureTemplate = document.querySelector('#picture');
+
   photos.forEach((photo,id) => {
     // клонируем шаблон
     const pictureElement = pictureTemplate.content.firstElementChild.cloneNode(true);
@@ -26,7 +26,6 @@ pictureElement.dataset.index = id;
     pictureImg.src = photo.url;
     pictureLikes.textContent = photo.likes;
     pictureComments.textContent = photo.comments.length;
-
     // добавляем заполненный элемент в фрагмент
     picturesFragment.appendChild(pictureElement);
   });
