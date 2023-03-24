@@ -1,4 +1,5 @@
 function showBigPicture(photo) {
+
   const bigPicture = document.querySelector('.big-picture');
   bigPicture.classList.remove('hidden');
 
@@ -17,7 +18,14 @@ function showBigPicture(photo) {
   const commentsList = bigPicture.querySelector('.social__comments');
   commentsList.innerHTML = '';
 
-  photo.comments.forEach((comment) => {
+  const commentsLoader = bigPicture.querySelector('.comments-loader');
+  const batchSize = 5;
+  let currentBatchSize = batchSize;
+
+  function renderComments() {
+    const commentsToShow = photo.comments.slice(0, currentBatchSize);
+
+    commentsToShow.forEach((comment) => {
     const commentElement = document.createElement('li');
     commentElement.classList.add('social__comment');
 
@@ -35,11 +43,29 @@ function showBigPicture(photo) {
     commentElement.appendChild(avatarElement);
     commentElement.appendChild(textElement);
     commentsList.appendChild(commentElement);
+    });
+
+    commentsCountElement.textContent = currentBatchSize + ' из ' + photo.comments.length;
+
+    if (currentBatchSize >= photo.comments.length) {
+      commentsLoader.classList.add('hidden');
+    }
+
+  }
+  renderComments();
+
+  commentsLoader.addEventListener('click', () => {
+    currentBatchSize += batchSize;
+    renderComments();
   });
 
   document.body.classList.add('modal-open');
 
   document.addEventListener('keydown', onEscPress);
+
+const cancel = document.querySelector('.big-picture__cancel');
+ cancel.addEventListener('click', hideBigPicture);
+ console.log(cancel);
 
   function onEscPress(evt) {
     if (evt.key === 'Escape') {
@@ -52,6 +78,12 @@ function showBigPicture(photo) {
     document.body.classList.remove('modal-open');
     document.removeEventListener('keydown', onEscPress);
   }
+
 }
+
+const commentCountElement = document.querySelector('.social__comment-count');
+const commentLoaderElement = document.querySelector('.social__comments-loader');
+commentCountElement.classList.remove('hidden');
+commentLoaderElement.classList.remove('hidden');
 
 export {showBigPicture};

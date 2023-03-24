@@ -1,5 +1,5 @@
-import { getRandomDescription } from './arrays';
-import { getRandomName } from './arrays';
+import { getRandomDescription } from './arrays.js';
+import { getRandomName } from './arrays.js';
 
 // функция для генерации случайного числа в заданном диапазоне
 function getRandomNumber(min, max) {

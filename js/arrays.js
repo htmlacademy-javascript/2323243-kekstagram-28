@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { getRandomNumber } from './data.js';
-import { generateComment } from './data.js';
-import { generatePhoto } from './data.js';
+import { getRandomNumber, generateComment, generatePhoto } from './data.js';
+
 
 // функция для генерации случайной строки из заданных предложений
 function getRandomDescription() {
@@ -22,6 +21,5 @@ function getRandomName() {
   return names[getRandomNumber(0, names.length - 1)];
 }
 
-export {getRandomDescription};
-export {getRandomName};
+export {getRandomDescription, getRandomName};
 

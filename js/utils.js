@@ -38,7 +38,6 @@ const extractNumber = (string) => {
 
 
 // 4. формирование адресов
-eslint-disable-next-line no-unused-vars
 function padStart(string, minLength, pad) {
   const actualPad = minLength - string.length;
   if (actualPad <= 0) {
