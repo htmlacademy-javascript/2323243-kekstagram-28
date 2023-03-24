@@ -65,7 +65,6 @@ function showBigPicture(photo) {
 
 const cancel = document.querySelector('.big-picture__cancel');
  cancel.addEventListener('click', hideBigPicture);
- console.log(cancel);
 
   function onEscPress(evt) {
     if (evt.key === 'Escape') {
