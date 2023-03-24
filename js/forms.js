@@ -12,7 +12,7 @@ const commentField = document.querySelector('.text__description');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
-  erroTextParent: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper__error'
 });
 
@@ -20,7 +20,7 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown',onDocumentKeydown);
-}
+};
 
 const hideModal = () => {
   form.reset();
