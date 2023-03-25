@@ -1,3 +1,6 @@
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
+
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-za-яё0-9]{1,19}$/i;
 const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
@@ -24,15 +27,17 @@ const showModal = () => {
 
 const hideModal = () => {
   form.reset();
+  resetScale();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-}
+};
 
 const isTextFieldFocused = () =>
-document.activeElement === hashtagField ||
-document.activeElement === commentField;
+  document.activeElement === hashtagField ||
+  document.activeElement === commentField;
 
 function onDocumentKeydown(evt) {
   if(evt.key === 'Escape' && !isTextFieldFocused()) {
@@ -43,11 +48,11 @@ function onDocumentKeydown(evt) {
 
 const onCancelButtonClick = () => {
   hideModal();
-}
+};
 
 const onFileInputChange = () => {
   showModal();
-}
+};
 
 const isValidTag = (tag) => VALID_SYMBOLS.test(tag);
 
@@ -64,7 +69,7 @@ const validateTags = (value) => {
     .split('')
     .filter((tag) => tag.trim().length);
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
-}
+};
 
 pristine.addValidator(
   hashtagField,
