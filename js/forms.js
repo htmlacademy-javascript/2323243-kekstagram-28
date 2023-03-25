@@ -3,7 +3,9 @@ import { resetEffects } from './effects.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-za-яё0-9]{1,19}$/i;
-const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
+const HASHTAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
+const NUMBER_SYMBOLS_COMMENTFIELD = 140;
+const COMMENT_ERROR_TEXT = `Комментарий не может быть длиннее ${NUMBER_SYMBOLS_COMMENTFIELD} символов`;
 
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
@@ -74,8 +76,21 @@ const validateTags = (value) => {
 pristine.addValidator(
   hashtagField,
   validateTags,
-  TAG_ERROR_TEXT
+  HASHTAG_ERROR_TEXT,
+  { errorTextClass: 'img-upload__field-wrapper__error-hashtags' }
 );
+
+//функция для валидации длины комментария
+const validateCommentCount = (value) => value.trim().length <= 140;
+
+//валидацтор длины комментария
+pristine.addValidator(
+  commentField,
+  validateCommentCount,
+  COMMENT_ERROR_TEXT,
+  { errorTextClass: 'img-upload__field-wrapper__error-comment' }
+);
+
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
