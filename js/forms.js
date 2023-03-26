@@ -77,7 +77,6 @@ pristine.addValidator(
   hashtagField,
   validateTags,
   HASHTAG_ERROR_TEXT,
-  { errorTextClass: 'img-upload__field-wrapper__error-hashtags' }
 );
 
 //функция для валидации длины комментария
@@ -88,7 +87,6 @@ pristine.addValidator(
   commentField,
   validateCommentCount,
   COMMENT_ERROR_TEXT,
-  { errorTextClass: 'img-upload__field-wrapper__error-comment' }
 );
 
 
@@ -100,3 +98,4 @@ const onFormSubmit = (evt) => {
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 form.addEventListener('submit', onFormSubmit);
+
