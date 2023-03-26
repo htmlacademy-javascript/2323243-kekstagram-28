@@ -1,6 +1,11 @@
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
+
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-za-яё0-9]{1,19}$/i;
-const TAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
+const HASHTAG_ERROR_TEXT = 'Неправильно заполнены хэштеги';
+const NUMBER_SYMBOLS_COMMENTFIELD = 140;
+const COMMENT_ERROR_TEXT = `Комментарий не может быть длиннее ${NUMBER_SYMBOLS_COMMENTFIELD} символов`;
 
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
@@ -12,7 +17,7 @@ const commentField = document.querySelector('.text__description');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
-  erroTextParent: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper__error'
 });
 
@@ -20,19 +25,21 @@ const showModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown',onDocumentKeydown);
-}
+};
 
 const hideModal = () => {
   form.reset();
+  resetScale();
+  resetEffects();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-}
+};
 
 const isTextFieldFocused = () =>
-document.activeElement === hashtagField ||
-document.activeElement === commentField;
+  document.activeElement === hashtagField ||
+  document.activeElement === commentField;
 
 function onDocumentKeydown(evt) {
   if(evt.key === 'Escape' && !isTextFieldFocused()) {
@@ -43,11 +50,11 @@ function onDocumentKeydown(evt) {
 
 const onCancelButtonClick = () => {
   hideModal();
-}
+};
 
 const onFileInputChange = () => {
   showModal();
-}
+};
 
 const isValidTag = (tag) => VALID_SYMBOLS.test(tag);
 
@@ -64,13 +71,24 @@ const validateTags = (value) => {
     .split('')
     .filter((tag) => tag.trim().length);
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
-}
+};
 
 pristine.addValidator(
   hashtagField,
   validateTags,
-  TAG_ERROR_TEXT
+  HASHTAG_ERROR_TEXT,
 );
+
+//функция для валидации длины комментария
+const validateCommentCount = (value) => value.trim().length <= 140;
+
+//валидацтор длины комментария
+pristine.addValidator(
+  commentField,
+  validateCommentCount,
+  COMMENT_ERROR_TEXT,
+);
+
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
@@ -80,3 +98,4 @@ const onFormSubmit = (evt) => {
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 form.addEventListener('submit', onFormSubmit);
+

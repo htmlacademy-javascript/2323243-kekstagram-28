@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 function showBigPicture(photo) {
 
   const bigPicture = document.querySelector('.big-picture');
@@ -26,23 +27,23 @@ function showBigPicture(photo) {
     const commentsToShow = photo.comments.slice(0, currentBatchSize);
 
     commentsToShow.forEach((comment) => {
-    const commentElement = document.createElement('li');
-    commentElement.classList.add('social__comment');
+      const commentElement = document.createElement('li');
+      commentElement.classList.add('social__comment');
 
-    const avatarElement = document.createElement('img');
-    avatarElement.classList.add('social__picture');
-    avatarElement.src = comment.avatar;
-    avatarElement.alt = comment.name;
-    avatarElement.width = 35;
-    avatarElement.height = 35;
+      const avatarElement = document.createElement('img');
+      avatarElement.classList.add('social__picture');
+      avatarElement.src = comment.avatar;
+      avatarElement.alt = comment.name;
+      avatarElement.width = 35;
+      avatarElement.height = 35;
 
-    const textElement = document.createElement('p');
-    textElement.classList.add('social__text');
-    textElement.textContent = comment.message;
+      const textElement = document.createElement('p');
+      textElement.classList.add('social__text');
+      textElement.textContent = comment.message;
 
-    commentElement.appendChild(avatarElement);
-    commentElement.appendChild(textElement);
-    commentsList.appendChild(commentElement);
+      commentElement.appendChild(avatarElement);
+      commentElement.appendChild(textElement);
+      commentsList.appendChild(commentElement);
     });
 
     commentsCountElement.textContent = currentBatchSize + ' из ' + photo.comments.length;
@@ -63,8 +64,8 @@ function showBigPicture(photo) {
 
   document.addEventListener('keydown', onEscPress);
 
-const cancel = document.querySelector('.big-picture__cancel');
- cancel.addEventListener('click', hideBigPicture);
+  const cancel = document.querySelector('.big-picture__cancel');
+  cancel.addEventListener('click', hideBigPicture);
 
   function onEscPress(evt) {
     if (evt.key === 'Escape') {
