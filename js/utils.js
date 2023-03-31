@@ -23,18 +23,7 @@ const isPalindrom = (string) => {
 isPalindrom('Лёша на полке клопа нашёл')
 
 
-// 3. функция возвращающая целое число
-const extractNumber = (string) => {
-  if (typeof string === 'number') {
-    return string;
-  }
-  let result ='';
-  for(let i = 0; i < string.length; i++){
-    if (!Number.isNaN(parseInt(string.at(i),10)));
-    result += string.at(i)
-  }
-  return parseInt(result,10);
-}
+
 
 
 // 4. формирование адресов
