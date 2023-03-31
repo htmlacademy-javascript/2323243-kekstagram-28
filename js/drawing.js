@@ -1,5 +1,5 @@
-import {generatePhotosArray} from './data.js';
-import {showBigPicture} from './bigPicture.js';
+import { showBigPicture } from './bigPicture.js';
+import { getData } from './server.js';
 
 function createPhotoElements() {
   // находим контейнер для фотографий
@@ -10,33 +10,33 @@ function createPhotoElements() {
   oldPictures.forEach((picture) => picture.remove());
 
   // получаем массив фотографий
-  const photos = generatePhotosArray();
+  getData().then((photos) => {
+    // создаем фрагмент для вставки
+    const picturesFragment = document.createDocumentFragment();
 
-  // создаем фрагмент для вставки
-  const picturesFragment = document.createDocumentFragment();
+    // находим шаблон
+    const pictureTemplate = document.querySelector('#picture');
 
-  // находим шаблон
-  const pictureTemplate = document.querySelector('#picture');
+    photos.forEach((photo, id) => {
+      // клонируем шаблон
+      const pictureElement = pictureTemplate.content.firstElementChild.cloneNode(true);
+      pictureElement.dataset.index = id;
+      // находим элементы внутри шаблона
+      const pictureImg = pictureElement.querySelector('.picture__img');
+      const pictureLikes = pictureElement.querySelector('.picture__likes');
+      const pictureComments = pictureElement.querySelector('.picture__comments');
 
-  photos.forEach((photo,id) => {
-    // клонируем шаблон
-    const pictureElement = pictureTemplate.content.firstElementChild.cloneNode(true);
-    pictureElement.dataset.index = id;
-    // находим элементы внутри шаблона
-    const pictureImg = pictureElement.querySelector('.picture__img');
-    const pictureLikes = pictureElement.querySelector('.picture__likes');
-    const pictureComments = pictureElement.querySelector('.picture__comments');
+      // заполняем элементы данными из объекта фотографии
+      pictureImg.src = photo.url;
+      pictureLikes.textContent = photo.likes;
+      pictureComments.textContent = photo.comments.length;
+      // добавляем заполненный элемент в фрагмент
+      picturesFragment.appendChild(pictureElement);
+    });
 
-    // заполняем элементы данными из объекта фотографии
-    pictureImg.src = photo.url;
-    pictureLikes.textContent = photo.likes;
-    pictureComments.textContent = photo.comments.length;
-    // добавляем заполненный элемент в фрагмент
-    picturesFragment.appendChild(pictureElement);
+    // вставляем фрагмент со всеми заполненными элементами в контейнер
+    picturesContainer.appendChild(picturesFragment);
   });
-
-  // вставляем фрагмент со всеми заполненными элементами в контейнер
-  picturesContainer.appendChild(picturesFragment);
 
   function onPictureClick(evt) {
     const target = evt.target.closest('.picture');
@@ -51,4 +51,5 @@ function createPhotoElements() {
 }
 
 export {createPhotoElements};
+
 
