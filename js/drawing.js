@@ -2,11 +2,16 @@ import {generatePhotosArray} from './data.js';
 import {showBigPicture} from './bigPicture.js';
 
 function createPhotoElements() {
+  // находим контейнер для фотографий
+  const picturesContainer = document.querySelector('.pictures');
+
+  // удаляем старые фото
+  const oldPictures = picturesContainer.querySelectorAll('.picture');
+  oldPictures.forEach((picture) => picture.remove());
+
   // получаем массив фотографий
   const photos = generatePhotosArray();
 
-  // находим контейнер для фотографий
-  const picturesContainer = document.querySelector('.pictures');
   // создаем фрагмент для вставки
   const picturesFragment = document.createDocumentFragment();
 
