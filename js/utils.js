@@ -83,7 +83,7 @@ const showAlert = (message) => {
 
 };
 
-const showSuccessMessage = (message) => {
+const showSuccessMessage = () => {
   const alert = document.createElement('div');
   alert.style.position = 'absolute';
   alert.style.zIndex = '100';
