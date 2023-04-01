@@ -2,8 +2,7 @@
 
 const isLessOrEqual = (string, length) => string.length <= length;
 
-// isLessOrEqual('привет', 7);
-
+isLessOrEqual('привет', 7);
 
 // 2. Функция палиндром
 // функция может принимать строку в разном регистре
@@ -21,10 +20,6 @@ const isPalindrom = (string) => {
   return tempString === reverseString
 }
 isPalindrom('Лёша на полке клопа нашёл')
-
-
-
-
 
 // 4. формирование адресов
 function padStart(string, minLength, pad) {
