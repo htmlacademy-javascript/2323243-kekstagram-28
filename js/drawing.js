@@ -1,5 +1,7 @@
 import { showBigPicture } from './bigPicture.js';
 import { getData } from './server.js';
+import { getFilteredPictures } from './filter.js';
+
 
 let photos = [];
 
@@ -11,6 +13,9 @@ function createPhotoElements() {
   const oldPictures = picturesContainer.querySelectorAll('.picture');
   oldPictures.forEach((picture) => picture.remove());
 
+  // добавляем отфильтрованные фото
+  const filteredPictures = getFilteredPictures();
+
   getData().then((data) => {
     photos = data;
 
@@ -19,7 +24,7 @@ function createPhotoElements() {
     // находим шаблон
     const pictureTemplate = document.querySelector('#picture');
 
-    photos.forEach((photo, id) => {
+    filteredPictures.forEach((photo, id) => {
       // клонируем шаблон
       const pictureElement = pictureTemplate.content.firstElementChild.cloneNode(true);
       pictureElement.dataset.index = id;
