@@ -6,6 +6,9 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const getRandomArrayElement = (array) =>
+  array[getRandomNumber(0, array.length - 1)];
+
 // функция для генерации объекта комментария
 function generateComment(id) {
   return {
@@ -43,7 +46,5 @@ function generatePhotosArray() {
   return photos;
 }
 
-export {getRandomNumber};
-export {generatePhoto};
-export {generateComment};
-export {generatePhotosArray};
+export { getRandomNumber, generatePhoto, generateComment, generatePhotosArray, getRandomArrayElement };
+
