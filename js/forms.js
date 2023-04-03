@@ -57,8 +57,25 @@ const onCancelButtonClick = () => {
 };
 
 const onFileInputChange = () => {
-  showModal();
+  const file = fileField.files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener('load', () => {
+    const img = document.createElement('img');
+    img.src = reader.result;
+    img.alt = 'preview';
+    const previewContainer = document.querySelector('.img-upload__preview');
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(img);
+    resetScale();
+    showModal();
+  });
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 };
+
 
 const isValidTag = (tag) => VALID_SYMBOLS.test(tag);
 
