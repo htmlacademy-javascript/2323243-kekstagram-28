@@ -15,6 +15,7 @@ const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('button[type="submit"]');
+
 const SubmitButtonText = {
   IDLE: 'Отправить',
 };
@@ -55,6 +56,7 @@ function onDocumentKeydown(evt) {
 const onCancelButtonClick = () => {
   hideModal();
 };
+
 
 const onFileInputChange = () => {
   const file = fileField.files[0];

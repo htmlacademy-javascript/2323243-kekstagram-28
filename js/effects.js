@@ -51,7 +51,7 @@ const EFFECTS = [
 const DEFAULT_EFFECT = EFFECTS[0];
 let chosenEffect = DEFAULT_EFFECT;
 
-const imageElement = document.querySelector('.img-upload__preview img');
+const getImageElement = () => document.querySelector('.img-upload__preview img');
 const effectsElement = document.querySelector('.effects');
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainerElement = document.querySelector('.img-upload__overlay');
@@ -89,6 +89,7 @@ const onEffectsChange = (evt) => {
     return;
   }
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
+  const imageElement = getImageElement();
   imageElement.style.filter = isDefault()
     ? DEFAULT_EFFECT.style
     : `${chosenEffect.style}(${sliderElement.noUiSlider.get()}${chosenEffect.unit})`;
@@ -97,6 +98,7 @@ const onEffectsChange = (evt) => {
 
 const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
+  const imageElement = getImageElement();
   imageElement.style.filter = isDefault()
     ? DEFAULT_EFFECT.style
     : `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
