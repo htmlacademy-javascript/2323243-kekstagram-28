@@ -89,7 +89,9 @@ const onEffectsChange = (evt) => {
     return;
   }
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
-  imageElement.className = `effects__preview--${chosenEffect.name}`;
+  imageElement.style.filter = isDefault()
+    ? DEFAULT_EFFECT.style
+    : `${chosenEffect.style}(${sliderElement.noUiSlider.get()}${chosenEffect.unit})`;
   updateSlider();
 };
 
