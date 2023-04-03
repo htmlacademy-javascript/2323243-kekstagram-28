@@ -1,11 +1,3 @@
-import './data.js';
-import './utils.js';
-import './arrays.js';
-import './bigPicture.js';
-import './drawing.js';
-import './forms.js';
-import './scale.js';
-import './effects.js';
 import { setOnFormSubmit, hideModal } from './forms.js';
 import { getData, sendData } from './server.js';
 import { showAlert, showSuccessMessage, showErrorMessage, debounce } from './utils.js';
