@@ -16,6 +16,7 @@ const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('button[type="submit"]');
 
+
 const submitButtonText = {
   IDLE: 'Отправить',
 };
