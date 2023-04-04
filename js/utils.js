@@ -99,4 +99,4 @@ function throttle (callback, delayBetweenFrames) {
   };
 }
 
-export { showAlert,showSuccessMessage,showErrorMessage, debounce, throttle };
+export { showAlert,showSuccessMessage, showErrorMessage, debounce, throttle };

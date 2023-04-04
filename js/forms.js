@@ -16,7 +16,7 @@ const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const submitButton = document.querySelector('button[type="submit"]');
 
-const SubmitButtonText = {
+const submitButtonText = {
   IDLE: 'Отправить',
 };
 
@@ -91,7 +91,7 @@ const hasUniqueTags = (tags) => {
 const validateTags = (value) => {
   const tags = value
     .trim()
-    .split(' ')
+    .split(/\s+/)
     .filter((tag) => tag.trim().length);
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
 };
@@ -118,7 +118,7 @@ const blockSubmitButton = () => {
 
 const unBlockSubmitButton = () => {
   submitButton.disabled = false;
-  submitButton.textContent = SubmitButtonText.IDLE;
+  submitButton.textContent = submitButtonText.IDLE;
 };
 
 const setOnFormSubmit = (cb) => {

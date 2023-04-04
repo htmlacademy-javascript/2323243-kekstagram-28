@@ -1,4 +1,7 @@
-import { showBigPicture } from './bigPicture.js';
+// что сделать с id?
+// константы должны стоять перед основным кодом. Здесь это учтено?
+
+import { showBigPicture } from './big-picture.js';
 import { getData } from './server.js';
 import { getFilteredPictures } from './filter.js';
 
@@ -57,6 +60,6 @@ function createPhotoElements() {
   picturesContainer.addEventListener('click', onPictureClick);
 }
 
-export {createPhotoElements};
+export { createPhotoElements };
 
 
