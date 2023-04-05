@@ -1,5 +1,3 @@
-// константы должны стоять перед основным кодом. Здесь это учтено?
-
 function showBigPicture(photo) {
 
   const batchSize = 5;
