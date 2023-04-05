@@ -48,7 +48,7 @@ const isTextFieldFocused = () =>
   document.activeElement === commentField;
 
 function onDocumentKeydown(evt) {
-  if(evt.key === 'Escape' && !isTextFieldFocused()) {
+  if(evt.key === 'Escape' && !isTextFieldFocused() && ! document.querySelector('.error')) {
     evt.preventDefault();
     hideModal();
   }
