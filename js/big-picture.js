@@ -18,7 +18,7 @@ function showBigPicture(photo) {
   commentsList.innerHTML = '';
 
   const commentsCountElement = bigPicture.querySelector('.comments-count');
-  commentsCountElement.textContent = photo.comments.length; //изменено
+  commentsCountElement.textContent = photo.comments.length;
 
   const commentsLoader = bigPicture.querySelector('.comments-loader');
   let currentBatchSize = batchSize;
@@ -87,4 +87,4 @@ const commentLoaderElement = document.querySelector('.social__comments-loader');
 commentCountElement.classList.remove('hidden');
 commentLoaderElement.classList.remove('hidden');
 
-export {showBigPicture};
+export { showBigPicture };

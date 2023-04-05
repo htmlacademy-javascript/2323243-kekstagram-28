@@ -1,4 +1,4 @@
-import { showBigPicture } from './bigPicture.js';
+import { showBigPicture } from './big-picture.js';
 import { getData } from './server.js';
 import { getFilteredPictures } from './filter.js';
 
@@ -24,7 +24,7 @@ function createPhotoElements() {
     // находим шаблон
     const pictureTemplate = document.querySelector('#picture');
 
-    filteredPictures.forEach((photo, id) => {
+    filteredPictures.forEach((photo) => {
       // клонируем шаблон
       const pictureElement = pictureTemplate.content.firstElementChild.cloneNode(true);
       pictureElement.dataset.index = photo.id;
@@ -57,6 +57,6 @@ function createPhotoElements() {
   picturesContainer.addEventListener('click', onPictureClick);
 }
 
-export {createPhotoElements};
+export { createPhotoElements };
 
 

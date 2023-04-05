@@ -56,6 +56,7 @@ const effectsElement = document.querySelector('.effects');
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainerElement = document.querySelector('.img-upload__overlay');
 const effectLevelElement = document.querySelector('.effect-level__value');
+const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
@@ -65,6 +66,14 @@ const showSlider = () => {
 
 const hideSlider = () => {
   sliderContainerElement.classList.add('hidden');
+};
+
+const showEffectLevel = () => {
+  imgUploadEffectLevel.classList.add('hidden');
+};
+
+const hideEffectLevel = () => {
+  imgUploadEffectLevel.classList.remove('hidden');
 };
 
 const updateSlider = () => {
@@ -77,10 +86,14 @@ const updateSlider = () => {
     start: chosenEffect.max,
   });
 
-  if (isDefault()) {
+  if (chosenEffect.name === 'none') {
+    showSlider();
+    showEffectLevel();
+  } else if (isDefault()) {
     hideSlider();
   } else {
     showSlider();
+    hideEffectLevel();
   }
 };
 
@@ -97,6 +110,7 @@ const onEffectsChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
+  showEffectLevel();
   const sliderValue = sliderElement.noUiSlider.get();
   const imageElement = getImageElement();
   imageElement.style.filter = isDefault()
@@ -124,4 +138,4 @@ hideSlider();
 effectsElement.addEventListener('change', onEffectsChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
-export {resetEffects};
+export { resetEffects };
