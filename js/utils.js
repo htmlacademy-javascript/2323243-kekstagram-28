@@ -34,11 +34,8 @@ const showSuccessMessage = () => {
 
   const successInner = document.querySelector('.success__inner');
 
-  const isSuccessInnerFocused = () =>
-    document.activeElement === successInner;
-
-  const clickHandler = () => {
-    if (!isSuccessInnerFocused()) {
+  const clickHandler = (evt) => {
+    if (!successInner.contains(evt.target)) {
       success.remove();
       document.removeEventListener('mousedown', clickHandler);
     }
@@ -70,11 +67,8 @@ const showErrorMessage = () => {
 
   const errorInner = document.querySelector('.error__inner');
 
-  const isErrorInnerFocused = () =>
-    document.activeElement === errorInner;
-
-  const clickHandler = () => {
-    if (!isErrorInnerFocused()) {
+  const clickHandler = (evt) => {
+    if (!errorInner.contains(evt.target)) {
       error.remove();
       document.removeEventListener('mousedown', clickHandler);
     }
