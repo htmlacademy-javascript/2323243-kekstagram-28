@@ -117,7 +117,7 @@ const blockSubmitButton = () => {
   submitButton.disabled = true;
 };
 
-const unBlockSubmitButton = () => {
+const unblockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = submitButtonText.IDLE;
 };
@@ -130,7 +130,7 @@ const setOnFormSubmit = (cb) => {
     if(isValid) {
       blockSubmitButton();
       await cb(new FormData(form));
-      unBlockSubmitButton();
+      unblockSubmitButton();
     }
   });
 };

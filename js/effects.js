@@ -76,6 +76,7 @@ const hideEffectLevel = () => {
   imgUploadEffectLevel.classList.remove('hidden');
 };
 
+showEffectLevel();
 const updateSlider = () => {
   sliderElement.noUiSlider.updateOptions({
     range: {
@@ -110,7 +111,6 @@ const onEffectsChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
-  showEffectLevel();
   const sliderValue = sliderElement.noUiSlider.get();
   const imageElement = getImageElement();
   imageElement.style.filter = isDefault()

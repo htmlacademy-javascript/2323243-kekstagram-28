@@ -5,9 +5,10 @@ import { getFilteredPictures } from './filter.js';
 
 let photos = [];
 
+// находим контейнер для фотографий
+const picturesContainer = document.querySelector('.pictures');
+
 function createPhotoElements() {
-  // находим контейнер для фотографий
-  const picturesContainer = document.querySelector('.pictures');
 
   // удаляем старые фото
   const oldPictures = picturesContainer.querySelectorAll('.picture');
@@ -44,18 +45,18 @@ function createPhotoElements() {
     // вставляем фрагмент со всеми заполненными элементами в контейнер
     picturesContainer.appendChild(picturesFragment);
   });
-
-  function onPictureClick(evt) {
-    const target = evt.target.closest('.picture');
-    if (target) {
-      const index = target.dataset.index;
-      const photo = photos[index];
-      showBigPicture(photo);
-    }
-  }
-
-  picturesContainer.addEventListener('click', onPictureClick);
 }
+
+function onPictureClick(evt) {
+  const target = evt.target.closest('.picture');
+  if (target) {
+    const index = target.dataset.index;
+    const photo = photos[index];
+    showBigPicture(photo);
+  }
+}
+
+picturesContainer.addEventListener('click', onPictureClick);
 
 export { createPhotoElements };
 
